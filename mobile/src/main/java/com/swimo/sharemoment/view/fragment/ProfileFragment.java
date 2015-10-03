@@ -1,4 +1,4 @@
-package com.swimo.sharemoment.fragment;
+package com.swimo.sharemoment.view.fragment;
 
 
 import android.app.ProgressDialog;
@@ -27,12 +27,12 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.swimo.sharemoment.Home;
+import com.swimo.sharemoment.view.Home;
 import com.swimo.sharemoment.R;
 import com.swimo.sharemoment.extra.CircularImageView;
-import com.swimo.sharemoment.extra.GridViewAdapter;
+import com.swimo.sharemoment.Adapter.GridViewAdapter;
 import com.swimo.sharemoment.extra.ImageLoader;
-import com.swimo.sharemoment.extra.ImagesList;
+import com.swimo.sharemoment.model.ImagesList;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;

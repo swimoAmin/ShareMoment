@@ -1,4 +1,4 @@
-package com.swimo.sharemoment.fragment;
+package com.swimo.sharemoment.view.fragment;
 
 
 import android.os.Bundle;
@@ -9,9 +9,13 @@ import android.view.ViewGroup;
 
 import com.swimo.sharemoment.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class SettingsFragment extends Fragment {
 
-public class SuggestionFragment extends Fragment {
-    public SuggestionFragment() {
+
+    public SettingsFragment() {
         // Required empty public constructor
     }
 
@@ -20,7 +24,8 @@ public class SuggestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_suggestion, container, false);
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
+
 
 }

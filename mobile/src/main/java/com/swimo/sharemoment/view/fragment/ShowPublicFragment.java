@@ -1,17 +1,14 @@
-package com.swimo.sharemoment.fragment;
+package com.swimo.sharemoment.view.fragment;
 
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,12 +24,11 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.swimo.sharemoment.Home;
+import com.swimo.sharemoment.view.Home;
 import com.swimo.sharemoment.R;
 import com.swimo.sharemoment.extra.ImageLoader;
 import com.swimo.sharemoment.extra.Save;
-import com.swimo.sharemoment.extra.recycleranimation.CardAdapter;
-import com.swimo.sharemoment.extra.recycleranimation.FavAdapter;
+import com.swimo.sharemoment.Adapter.CardAdapter;
 
 import java.io.File;
 import java.io.FileOutputStream;

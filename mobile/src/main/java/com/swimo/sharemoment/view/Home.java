@@ -1,4 +1,4 @@
-package com.swimo.sharemoment;
+package com.swimo.sharemoment.view;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -9,7 +9,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,18 +30,18 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.octicons_typeface_library.Octicons;
 import com.parse.ParseUser;
-import com.swimo.sharemoment.fragment.ContactFragment;
-import com.swimo.sharemoment.fragment.FavoritFragment;
-import com.swimo.sharemoment.fragment.ProfileFragment;
-import com.swimo.sharemoment.fragment.PublicFragment;
-import com.swimo.sharemoment.fragment.SettingsFragment;
-import com.swimo.sharemoment.fragment.SuggestionFragment;
-import com.swimo.sharemoment.fragment.UploadFragment;
+import com.swimo.sharemoment.R;
+import com.swimo.sharemoment.view.fragment.ContactFragment;
+import com.swimo.sharemoment.view.fragment.FavoritFragment;
+import com.swimo.sharemoment.view.fragment.ProfileFragment;
+import com.swimo.sharemoment.view.fragment.PublicFragment;
+import com.swimo.sharemoment.view.fragment.SettingsFragment;
+import com.swimo.sharemoment.view.fragment.SuggestionFragment;
+import com.swimo.sharemoment.view.fragment.UploadFragment;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Home extends AppCompatActivity {

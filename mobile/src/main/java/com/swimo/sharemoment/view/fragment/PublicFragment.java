@@ -1,4 +1,4 @@
-package com.swimo.sharemoment.fragment;
+package com.swimo.sharemoment.view.fragment;
 
 
 import android.app.ProgressDialog;
@@ -19,11 +19,10 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.swimo.sharemoment.R;
-import com.swimo.sharemoment.extra.ImagesList;
+import com.swimo.sharemoment.model.ImagesList;
 import com.swimo.sharemoment.extra.recycleranimation.AlphaInAnimationAdapter;
-import com.swimo.sharemoment.extra.recycleranimation.CardAdapter;
+import com.swimo.sharemoment.Adapter.CardAdapter;
 import com.swimo.sharemoment.extra.recycleranimation.FadeInAnimator;
-import com.swimo.sharemoment.extra.recycleranimation.FavAdapter;
 import com.swimo.sharemoment.extra.recycleranimation.ScaleInAnimationAdapter;
 
 import java.util.ArrayList;
@@ -32,21 +31,20 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavoritFragment extends Fragment {
-
+public class PublicFragment extends Fragment {
 
     View v;
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
-    // GridViewAdapterPublic mAdapter;
-
+  // GridViewAdapterPublic mAdapter;
+    ProgressBar pB;
     List<ImagesList> mItems;
-    List<ParseObject> ob;
+    List<ParseObject> ob,ob1;
     ProgressDialog mProgressDialog;
+    int s=0;
 
-
-    public FavoritFragment() {
+    public PublicFragment() {
         // Required empty public constructor
     }
 
@@ -54,7 +52,7 @@ public class FavoritFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v= inflater.inflate(R.layout.fragment_favorit, container, false);
+        v= inflater.inflate(R.layout.fragment_public, container, false);
 
         new RemoteDataTask().execute();
 
@@ -68,9 +66,9 @@ public class FavoritFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-         //   pB=(ProgressBar)v.findViewById(R.id.fragment_images_progressfav);
+            pB=(ProgressBar)v.findViewById(R.id.fragment_images_progress);
             // Show progressdialog
-           // pB.setVisibility(View.GONE);
+            pB.setVisibility(View.GONE);
             // Create a progressdialog
             mProgressDialog = new ProgressDialog(getActivity());
             // Set progressdialog title
@@ -87,29 +85,50 @@ public class FavoritFragment extends Fragment {
             // Create the array
             mItems = new ArrayList<ImagesList>();
             try{
-                // Locate the class table named "SamsungPhones" in Parse.com
-                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Favoris");
-                // Locate the column named "position" in Parse.com and order list
-                // by ascending
-                query.include("User");
-                query.whereEqualTo("user", ParseUser.getCurrentUser());
-                ob=query.find();
+            // Locate the class table named "SamsungPhones" in Parse.com
+            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                    "Images");
+            // Locate the column named "position" in Parse.com and order list
+            // by ascending
+            query.include("User");
+            query.whereEqualTo("previlege", true);
+            ob=query.find();
 
-                for (ParseObject img : ob) {
+                        for (ParseObject img : ob) {
+                            ParseQuery<ParseObject> queryimg = new ParseQuery<ParseObject>(
+                                    "Favoris");
+                            // Locate the column named "position" in Parse.com and order list
+                            // by ascending
 
-                    ImagesList map = new ImagesList();
-                    map.setimageurl(img.getString("url"));
-                    map.setDesc(img.getParseObject("owner").getObjectId());
-                    map.setId(img.getObjectId());
-                    mItems.add(map);
+                            queryimg.whereEqualTo("imagee", img.getObjectId());
+                            queryimg.whereEqualTo("user",ParseUser.getCurrentUser());
+                            ob1 = queryimg.find();
 
-                }
+                            Log.e("test",img.getObjectId());
+                            ParseFile image = (ParseFile) img.get("image");
+                            ImagesList map = new ImagesList();
+                            if(ob1.size()>0){
+                                ParseObject imginit=ob1.get(0);
+                                s=1;
+                                ob1.remove(0);
+                            }else{
+                                s=0;
+                            }
+                            Log.e("test",s+"");
+                            map.setId(img.getObjectId());
 
-            } catch (ParseException e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
+                            map.setimageurl(image.getUrl());
+
+                            map.setImginit(s);
+                            map.setU(img.getParseUser("owner"));
+                            mItems.add(map);
+
+                        }
+
+        } catch (ParseException e) {
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+        }
 
 
             return null;
@@ -117,15 +136,15 @@ public class FavoritFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void result) {
-            mRecyclerView = (RecyclerView)v.findViewById(R.id.Recfav);
+            mRecyclerView = (RecyclerView)v.findViewById(R.id.Recpublic);
 
             mRecyclerView.setHasFixedSize(true);
 
             mLayoutManager = new LinearLayoutManager(getActivity());
             mRecyclerView.setLayoutManager(mLayoutManager);
 
-            mAdapter = new FavAdapter(getActivity(),mItems);
-            mRecyclerView.setItemAnimator(new FadeInAnimator());
+            mAdapter = new CardAdapter(getActivity(),mItems);
+           mRecyclerView.setItemAnimator(new FadeInAnimator());
 
             AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(mAdapter);
             ScaleInAnimationAdapter scaleAdapter = new ScaleInAnimationAdapter(alphaAdapter);

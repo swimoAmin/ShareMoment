@@ -1,22 +1,20 @@
-package com.swimo.sharemoment.extra;
+package com.swimo.sharemoment.Adapter;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.swimo.sharemoment.Home;
+import com.swimo.sharemoment.extra.ImageLoader;
+import com.swimo.sharemoment.extra.SquareImageView;
+import com.swimo.sharemoment.model.ImagesList;
+import com.swimo.sharemoment.view.Home;
 import com.swimo.sharemoment.R;
-import com.swimo.sharemoment.fragment.SettingsFragment;
-import com.swimo.sharemoment.fragment.ShowFragment;
+import com.swimo.sharemoment.view.fragment.ShowFragment;
 
 import java.util.ArrayList;
 import java.util.List;

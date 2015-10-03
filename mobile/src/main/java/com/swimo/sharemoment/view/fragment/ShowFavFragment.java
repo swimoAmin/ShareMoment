@@ -1,4 +1,4 @@
-package com.swimo.sharemoment.fragment;
+package com.swimo.sharemoment.view.fragment;
 
 
 import android.graphics.Bitmap;
@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.DeleteCallback;
@@ -19,12 +18,11 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.swimo.sharemoment.Home;
+import com.swimo.sharemoment.view.Home;
 import com.swimo.sharemoment.R;
-import com.swimo.sharemoment.extra.GridViewAdapter;
 import com.swimo.sharemoment.extra.ImageLoader;
 import com.swimo.sharemoment.extra.Save;
-import com.swimo.sharemoment.extra.recycleranimation.FavAdapter;
+import com.swimo.sharemoment.Adapter.FavAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,9 +1,10 @@
-package com.swimo.sharemoment.extra;
+package com.swimo.sharemoment.model;
 
 import android.support.v7.graphics.Palette;
 
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.swimo.sharemoment.extra.Utils;
 
 /**
  * Created by swimo on 13/09/15.
@@ -14,9 +15,9 @@ public class ImagesList {
     private String desc;
     private String id;
     private Boolean privilege;
-    transient private Palette.Swatch swatch;
-    private float ratio;
     private int imginit;
+
+
 
     public int getImginit() {
         return imginit;
@@ -73,27 +74,5 @@ public class ImagesList {
 
 
 
-    ///ziyed
-    //
-    //
-    public Palette.Swatch getSwatch() {
-        return swatch;
-    }
-
-    public void setSwatch(Palette.Swatch swatch) {
-        this.swatch = swatch;
-    }
-    public float getRatio() {
-        return ratio;
-    }
-
-    public void setRatio(float ratio) {
-        this.ratio = ratio;
-    }
-
-    public String getImageSrc(int screenWidth) {
-        return image  + Utils.optimalImageWidth(screenWidth);
-    }
-    ////////
 
 }

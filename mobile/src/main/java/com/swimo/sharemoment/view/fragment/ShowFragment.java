@@ -1,4 +1,4 @@
-package com.swimo.sharemoment.fragment;
+package com.swimo.sharemoment.view.fragment;
 
 
 import android.annotation.TargetApi;
@@ -8,8 +8,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +21,11 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.swimo.sharemoment.Home;
+import com.swimo.sharemoment.view.Home;
 import com.swimo.sharemoment.R;
-import com.swimo.sharemoment.extra.GridViewAdapter;
+import com.swimo.sharemoment.Adapter.GridViewAdapter;
 import com.swimo.sharemoment.extra.ImageLoader;
 import com.swimo.sharemoment.extra.Save;
-
-import static android.graphics.Color.BLACK;
-import static com.swimo.sharemoment.R.color.md_black_1000;
 
 /**
  * A simple {@link Fragment} subclass.

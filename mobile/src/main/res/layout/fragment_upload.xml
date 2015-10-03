@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.swimo.sharemoment.fragment.UploadFragment"
+    tools:context="com.swimo.sharemoment.view.fragment.UploadFragment"
     >
    <!-- android:background="@color/about_libraries_primary"-->
 

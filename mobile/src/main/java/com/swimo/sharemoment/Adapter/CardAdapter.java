@@ -1,11 +1,9 @@
-package com.swimo.sharemoment.extra.recycleranimation;
+package com.swimo.sharemoment.Adapter;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Display;
@@ -14,30 +12,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.androidquery.AQuery;
 import com.parse.DeleteCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.squareup.picasso.Picasso;
-import com.swimo.sharemoment.Accueil;
-import com.swimo.sharemoment.Home;
+import com.swimo.sharemoment.view.Home;
 import com.swimo.sharemoment.R;
 import com.swimo.sharemoment.extra.ImageLoader;
-import com.swimo.sharemoment.extra.ImagesList;
-import com.swimo.sharemoment.extra.Save;
+import com.swimo.sharemoment.model.ImagesList;
 import com.swimo.sharemoment.extra.SquareImageView;
-import com.swimo.sharemoment.fragment.ShowFavFragment;
-import com.swimo.sharemoment.fragment.ShowPublicFragment;
+import com.swimo.sharemoment.view.fragment.ShowPublicFragment;
 
 import java.util.ArrayList;
 import java.util.List;

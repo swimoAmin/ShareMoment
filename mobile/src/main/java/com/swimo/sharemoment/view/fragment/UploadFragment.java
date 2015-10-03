@@ -1,18 +1,14 @@
-package com.swimo.sharemoment.fragment;
+package com.swimo.sharemoment.view.fragment;
 
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,20 +19,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.parse.CountCallback;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.swimo.sharemoment.Accueil;
-import com.swimo.sharemoment.Home;
+import com.swimo.sharemoment.view.Accueil;
+import com.swimo.sharemoment.view.Home;
 import com.swimo.sharemoment.R;
-import com.swimo.sharemoment.extra.ScalingUtilities;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;

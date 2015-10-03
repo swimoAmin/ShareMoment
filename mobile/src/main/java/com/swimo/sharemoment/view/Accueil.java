@@ -1,4 +1,4 @@
-package com.swimo.sharemoment;
+package com.swimo.sharemoment.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -42,6 +42,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+import com.swimo.sharemoment.R;
 import com.swimo.sharemoment.extra.Connectivity;
 import com.swimo.sharemoment.extra.Save;
 import com.throrinstudio.android.common.libs.validator.Form;
