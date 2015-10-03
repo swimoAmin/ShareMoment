@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.swimo.sharemoment.fragment.ProfileFragment"
+    android:background="#000000"
+
+    >
+
+
+
+    <RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="130dp"
+    android:id="@+id/relativeLayout"
+    android:background="@drawable/header">
+    <com.swimo.sharemoment.extra.CircularImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageViewcercle"
+        android:src="@drawable/profile4"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select image profile"
+        android:id="@+id/buttonselect"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/imageViewcercle"
+        android:layout_toEndOf="@+id/imageViewcercle" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="USername"
+        android:id="@+id/username"
+        android:layout_below="@+id/buttonselect"
+        android:layout_alignLeft="@+id/buttonselect"
+        android:layout_alignStart="@+id/buttonselect"
+        android:layout_alignRight="@+id/buttonselect"
+        android:layout_alignEnd="@+id/buttonselect"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="email"
+        android:id="@+id/maildield"
+        android:layout_below="@+id/username"
+        android:layout_alignLeft="@+id/username"
+        android:layout_alignStart="@+id/username"
+        android:layout_alignRight="@+id/username"
+        android:layout_alignEnd="@+id/username"
+        android:textColor="#ffffff"/>
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="My cloud galerie"
+        android:id="@+id/cloudgal"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <GridView
+        android:id="@+id/gridview"
+        android:background="#000000"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:verticalSpacing="1dp"
+        android:horizontalSpacing="1dp"
+        android:stretchMode="columnWidth"
+        android:numColumns="2"
+        android:layout_below="@+id/cloudgal"
+        android:layout_marginTop="1dp"/>
+
+
+
+
+</RelativeLayout>

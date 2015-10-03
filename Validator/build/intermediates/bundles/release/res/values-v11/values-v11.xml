@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Volumes/MAC%202/travaille/android/ShareMoment/Validator/res/values-v11/themes.xml -->
+    <eat-comment/>
+    <style name="Validator.Light" parent="@android:style/Theme.Light"/>
+</resources>

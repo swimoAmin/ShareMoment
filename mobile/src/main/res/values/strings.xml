@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Share Moment</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="facebook_app_id">1494471747534944</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+    <string name="profile">PROFILE</string>
+    <string name="feed">PUBLIC</string>
+    <string name="activity">FAVORITE</string>
+    <string name="settings">LOG OUT</string>
+    <string name="title_activity_home">Home</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

@@ -1,0 +1,126 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.0'
+    }
+}
+
+
+allprojects {
+    apply plugin: 'maven'
+
+    tasks.withType(JavaCompile) {
+        options.incremental = true
+    }
+
+    repositories {
+        mavenCentral()
+        jcenter()
+
+        maven {
+            url "/Volumes/Mac 2/travaille/android/creativesdk-repo/release" //ADD THE CORRECT LOCATION OF THE CREATIVESDK LIBRARY FILES
+        }
+
+    }
+}
+
+
+
+
+
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "com.swimo.sharemoment"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    sourceSets {
+        main {
+            setRoot 'src/main'
+        }
+
+        debug {
+            setRoot 'src/debug'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+    }
+
+    dexOptions {
+        jumboMode true
+        incremental true
+        preDexLibraries false
+        javaMaxHeapSize "4g"
+    }
+}
+dependencies {
+    compile project(':library')
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    wearApp project(':wear')
+    compile "com.android.support:appcompat-v7:23.0.1"
+    //compile 'com.google.android.gms:play-services:7.5.0'
+    compile 'com.adobe.creativesdk:image:4.0.0'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.5.0'
+    compile 'com.parse.bolts:bolts-android:1.+'
+    //compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+    compile project(':Validator')
+   // compile 'com.jakewharton:butterknife:6.1.0'
+    compile('com.mikepenz:aboutlibraries:5.2.2@aar') {
+        transitive = true
+    }
+    compile 'com.mikepenz:crossfader:1.0.5@aar'
+
+    compile 'com.mikepenz:google-material-typeface:1.2.0.1@aar'
+    compile 'com.mikepenz:fontawesome-typeface:4.4.0.1@aar'
+    compile 'com.mikepenz:octicons-typeface:3.0.0.1@aar'
+
+    compile 'com.android.support:cardview-v7:22.0.3'
+    compile 'com.android.support:recyclerview-v7:22.0.3'
+
+    compile "com.squareup.picasso:picasso:2.4.0"
+
+    compile 'com.github.lzyzsd:circleprogress:1.0.1@aar'
+
+    compile 'com.github.xiprox.errorview:library:1.0.0'
+
+
+
+
+
+
+
+}
