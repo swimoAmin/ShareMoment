@@ -294,6 +294,7 @@ FBshare.setOnClickListener(new View.OnClickListener() {
                  si=true;
                  mail.setVisibility(View.VISIBLE);
                  Facebook.setVisibility(View.GONE);
+                 //test
 
              }  else {
 
