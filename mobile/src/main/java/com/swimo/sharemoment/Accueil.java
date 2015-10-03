@@ -323,8 +323,7 @@ FBshare.setOnClickListener(new View.OnClickListener() {
                          //user.put("Max", 20);
                         // user.put("Points",1000);
 
-
-
+                         //changes here
 
                          user.signUpInBackground(new SignUpCallback() {
                              public void done(ParseException e) {
