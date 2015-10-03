@@ -7,8 +7,8 @@ import com.aviary.android.feather.sdk.IAviaryClientCredentials;
 
 public class MyApplication extends MultiDexApplication implements IAviaryClientCredentials {
 
-    private static final String CANARO_EXTRA_BOLD_PATH = "fonts/canaro_extra_bold.otf";
-    public static Typeface canaroExtraBold;
+    /*private static final String CANARO_EXTRA_BOLD_PATH = "fonts/canaro_extra_bold.otf";
+    public static Typeface canaroExtraBold;*/
     @Override
     public void onCreate() {
         super.onCreate();
@@ -32,8 +32,8 @@ public class MyApplication extends MultiDexApplication implements IAviaryClientC
         return "9782cfea-fe1a-441d-8703-9e19ad734c4a";
     }
 
-    private void initTypeface() {
+    /*private void initTypeface() {
         canaroExtraBold = Typeface.createFromAsset(getAssets(), CANARO_EXTRA_BOLD_PATH);
 
-    }
+    }*/
 }
