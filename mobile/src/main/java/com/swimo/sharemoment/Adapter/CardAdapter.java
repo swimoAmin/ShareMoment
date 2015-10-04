@@ -80,12 +80,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         device_width = size.x;
         int height = size.y;
         mProgressDialog = new ProgressDialog(context);
-        // Set progressdialog title
         mProgressDialog.setTitle("Share Moments ");
-        // Set progressdialog message
         mProgressDialog.setMessage("Loading...");
         mProgressDialog.setIndeterminate(false);
-        // Show progressdialog
         mProgressDialog.show();
         return viewHolder;
     }
@@ -115,47 +112,6 @@ if(mItems.get(i).getImginit()==1){
                 .error(R.drawable.ic_error_white_18dp)
                 .into(viewHolder.imgThumbnail);*/
 
-       /* (new AQuery(context)).id(viewHolder.imgThumbnail).image(mItems.get(i).getimageurl(),
-                true, true, device_width, R.drawable.profile, null, 0);
-
-
-        k+=1;
-
-        if(in) {
-
-            try {
-                // Locate the class table named "SamsungPhones" in Parse.com
-                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Favoris");
-                // Locate the column named "position" in Parse.com and order list
-                // by ascending
-
-                query.whereEqualTo("Image", mItems.get(i).getId());
-                ob = query.find();
-                for (ParseObject img : ob) {
-                    idobj = img.getObjectId();
-                    if (!idobj.equals("")) {
-                        //arrayid.add(i, idobj);
-                        viewHolder.fav.setVisibility(View.GONE);
-                        viewHolder.delfav.setVisibility(View.VISIBLE);
-
-
-                        idobj = "";
-                    }
-
-                }
-                if(k>mItems.size()) {
-                    in=false;
-                    mProgressDialog.hide();
-                }
-            } catch (ParseException e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-        }
-*/
-
-
 
         viewHolder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,22 +121,16 @@ if(mItems.get(i).getImginit()==1){
                 try {
                     ParseQuery<ParseObject> queryimg = new ParseQuery<ParseObject>(
                             "Images");
-                    // Locate the column named "position" in Parse.com and order list
-                    // by ascending
 
                     queryimg.whereEqualTo("objectId", mItems.get(i).getId());
                     ob1 = queryimg.find();
                     ParseObject imginit=ob1.get(0);
-                    // Locate the class table named "SamsungPhones" in Parse.com
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "Favoris");
-                    // Locate the column named "position" in Parse.com and order list
-                    // by ascending
 
                     query.whereEqualTo("Imginit", imginit);
                     ob = query.find();
 
-                    //ParseObject imgf=ob.get(0);
                         ParseObject img = new ParseObject("Favoris");
 
                         img.put("Imginit",imginit);
@@ -231,18 +181,11 @@ if(mItems.get(i).getImginit()==1){
                 try {
                     ParseQuery<ParseObject> queryimg = new ParseQuery<ParseObject>(
                             "Images");
-                    // Locate the column named "position" in Parse.com and order list
-                    // by ascending
-
                     queryimg.whereEqualTo("objectId", mItems.get(i).getId());
                     ob1 = queryimg.find();
                     ParseObject imginit=ob1.get(0);
-                    // Locate the class table named "SamsungPhones" in Parse.com
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "Favoris");
-                    // Locate the column named "position" in Parse.com and order list
-                    // by ascending
-
                     query.whereEqualTo("Imginit", imginit);
                     ob = query.find();
                     for (ParseObject img : ob) {
@@ -262,8 +205,6 @@ if(mItems.get(i).getImginit()==1){
                 query.getInBackground(idfk, new GetCallback<ParseObject>() {
                     public void done(ParseObject img, ParseException e) {
                         if (e == null) {
-                            // Now let's update it with some new data. In this case, only cheatMode and score
-                            // will get sent to the Parse Cloud. playerName hasn't changed.
 
                             img.deleteInBackground(new DeleteCallback() {
                                 @Override

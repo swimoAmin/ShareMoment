@@ -45,7 +45,6 @@ public class PublicFragment extends Fragment {
     int s=0;
 
     public PublicFragment() {
-        // Required empty public constructor
     }
 
 
@@ -66,9 +65,7 @@ public class PublicFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pB=(ProgressBar)v.findViewById(R.id.fragment_images_progress);
-            // Show progressdialog
-            pB.setVisibility(View.GONE);
+
             // Create a progressdialog
             mProgressDialog = new ProgressDialog(getActivity());
             // Set progressdialog title
