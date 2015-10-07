@@ -22,7 +22,7 @@ allprojects {
         jcenter()
 
         maven {
-            url "/Volumes/Mac 2/travaille/android/creativesdk-repo/release" //ADD THE CORRECT LOCATION OF THE CREATIVESDK LIBRARY FILES
+            url "/Volumes/Mac 2/travaille/android/creativesdk-repo/release"
         }
 
     }

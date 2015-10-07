@@ -145,10 +145,8 @@ public class PublicFragment extends Fragment {
 
             AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(mAdapter);
             ScaleInAnimationAdapter scaleAdapter = new ScaleInAnimationAdapter(alphaAdapter);
-            //        scaleAdapter.setFirstOnly(false);
-            //        scaleAdapter.setInterpolator(new OvershootInterpolator());
+
             mRecyclerView.setAdapter(scaleAdapter);
-            // Close the progressdialog
             mProgressDialog.dismiss();
 
             /*
