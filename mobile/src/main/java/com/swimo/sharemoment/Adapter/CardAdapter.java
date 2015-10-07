@@ -156,7 +156,7 @@ if(mItems.get(i).getImginit()==1){
                                     public void done(ParseObject object, ParseException e) {
                                         if (e == null) {
 
-
+//get the visibility of button
                                             Log.e("test", object.getParseUser("owner").getObjectId());
                                             f = 1;
                                             viewHolder.fav.setVisibility(View.GONE);
@@ -166,7 +166,7 @@ if(mItems.get(i).getImginit()==1){
                                             installation.put("liker", ParseUser.getCurrentUser());
                                             installation.put("owner", object.getParseUser("owner"));
                                             installation.saveInBackground();
-                                            //12
+
 
 
                                             ParseQuery query = ParseInstallation.getQuery();
