@@ -4,6 +4,10 @@ import android.graphics.Typeface;
 import android.support.multidex.MultiDexApplication;
 
 import com.aviary.android.feather.sdk.IAviaryClientCredentials;
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseInstallation;
+import com.parse.ParseUser;
 
 public class MyApplication extends MultiDexApplication implements IAviaryClientCredentials {
 
@@ -12,8 +16,14 @@ public class MyApplication extends MultiDexApplication implements IAviaryClientC
     @Override
     public void onCreate() {
         super.onCreate();
-        //initTypeface();
+        Parse.initialize(this, "zzg2F5c2W3aPzDNXnWBESiAETIEzRsCddUOdiPkC", "2Q1RNGzWIPMcDQhH5Jw3u6nPsKSirdGCJOQbMwty");
+      //  ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
 
+
+        ParseInstallation.getCurrentInstallation().saveInBackground();
 
     }
 

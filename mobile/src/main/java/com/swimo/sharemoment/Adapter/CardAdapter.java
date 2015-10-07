@@ -16,9 +16,12 @@ import android.widget.Toast;
 
 
 import com.parse.DeleteCallback;
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -53,6 +56,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     public static String url,idob;
     public static ParseUser owner;
     public static int f=0;
+    String username2;
+
 
 
     public CardAdapter(Context context,List<ImagesList> mItems) {
@@ -137,9 +142,7 @@ if(mItems.get(i).getImginit()==1){
                         img.put("owner", mItems.get(i).getU());
                         img.put("imagee",mItems.get(i).getId());
                         img.put("url",mItems.get(i).getimageurl());
-                        img.put("user",ParseUser.getCurrentUser());
-                        Log.e("test", mItems.get(i).getId());
-
+                        img.put("user", ParseUser.getCurrentUser());
 
                     img.saveInBackground(new SaveCallback() {
 
@@ -147,10 +150,36 @@ if(mItems.get(i).getImginit()==1){
                         public void done(
                                 ParseException e) {
                             if (e == null) {
-                                f=1;
-                                viewHolder.fav.setVisibility(View.GONE);
-                                viewHolder.delfav.setVisibility(View.VISIBLE);
-                            } else {
+                                ParseQuery<ParseObject> query = ParseQuery.getQuery("Images");
+                                query.include("User");
+                                query.getInBackground(mItems.get(i).getId(), new GetCallback<ParseObject>() {
+                                    public void done(ParseObject object, ParseException e) {
+                                        if (e == null) {
+
+
+                                            Log.e("test", object.getParseUser("owner").getObjectId());
+                                            f = 1;
+                                            viewHolder.fav.setVisibility(View.GONE);
+                                            viewHolder.delfav.setVisibility(View.VISIBLE);
+
+                                            ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                                            installation.put("liker", ParseUser.getCurrentUser());
+                                            installation.put("owner", object.getParseUser("owner"));
+                                            installation.saveInBackground();
+
+
+                                            ParseQuery query = ParseInstallation.getQuery();
+                                            query.whereEqualTo("owner", object.getParseUser("owner"));
+                                            ParsePush.sendMessageInBackground(ParseUser.getCurrentUser().getUsername()+" like your picture", query);
+
+                                            // object will be your game score
+                                        } else {
+                                            Log.e("test", e.getMessage());
+                                            // something went wrong
+                                        }
+                                    }
+                                });
+                                 } else {
 
 
                             }

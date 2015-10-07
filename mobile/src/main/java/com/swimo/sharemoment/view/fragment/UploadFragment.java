@@ -123,22 +123,7 @@ Button upload,discard,select;
                     bitmapqr.recycle();
                     byte[] image = streamqr
                             .toByteArray();
-/*
 
-                    // Part 1: Decode image
-                    Bitmap unscaledBitmap = ScalingUtilities.decodeResource2(image1,
-                            mDstWidth, mDstHeight, ScalingUtilities.ScalingLogic.FIT);
-
-                    // Part 2: Scale image
-                    Bitmap scaledBitmap = ScalingUtilities.createScaledBitmap(unscaledBitmap, mDstWidth,
-                            mDstHeight, ScalingUtilities.ScalingLogic.FIT);
-                    unscaledBitmap.recycle();
-                    ByteArrayOutputStream streamqr2 = new ByteArrayOutputStream();
-                    scaledBitmap.compress(
-                            Bitmap.CompressFormat.PNG,
-                            100, streamqr2);
-                    byte[] image = streamqr2
-                            .toByteArray();*/
 
                     ParseFile file = new ParseFile(
                             "Pimg", image);
@@ -156,13 +141,7 @@ Button upload,discard,select;
                             if (e == null) {
                                 Toast.makeText(getActivity(), "Image Saved", Toast.LENGTH_LONG).show();
                                 desc.setText("");
-                               /* ParseUser user = ParseUser.getCurrentUser();
-                                user.put("Points", (user.getInt("Points")-10));
-                                user.saveInBackground(new SaveCallback() {
-                                    public void done(ParseException e) {
 
-                                    }
-                                });*/
                                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Point");
                                 query.whereEqualTo("owner", ParseUser.getCurrentUser());
                                 query.findInBackground(new FindCallback<ParseObject>() {
