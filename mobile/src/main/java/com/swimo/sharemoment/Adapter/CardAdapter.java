@@ -166,6 +166,7 @@ if(mItems.get(i).getImginit()==1){
                                             installation.put("liker", ParseUser.getCurrentUser());
                                             installation.put("owner", object.getParseUser("owner"));
                                             installation.saveInBackground();
+                                            //12
 
 
                                             ParseQuery query = ParseInstallation.getQuery();
