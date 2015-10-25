@@ -83,7 +83,7 @@ Button upload,discard,select;
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParseQuery<ParseObject> query = getQuery("Images");
+               /* ParseQuery<ParseObject> query = getQuery("Images");
                 query.include("User");
                 query.whereEqualTo("owner", ParseUser.getCurrentUser());
                 query.countInBackground(new CountCallback() {
@@ -100,7 +100,7 @@ Button upload,discard,select;
                             // The request failed
                         }
                     }
-                });
+                });*/
 
                     final ParseUser u = ParseUser.getCurrentUser();
 
@@ -110,9 +110,6 @@ Button upload,discard,select;
 
                     Bitmap bitmapqr = drawableqr
                             .getBitmap();
-                    int mDstWidth=400;
-                   int mDstHeight=600;
-                    // bitmapqr = Bitmap.createScaledBitmap(bitmapqr, mDstHeight, mDstWidth, true);
 
 
                     ByteArrayOutputStream streamqr = new ByteArrayOutputStream();
@@ -147,9 +144,11 @@ Button upload,discard,select;
                                 query.findInBackground(new FindCallback<ParseObject>() {
                                     public void done(List<ParseObject> scoreList, ParseException e) {
                                         if (e == null) {
+                                            Log.e("test","mafamech erreur"+scoreList.size());
                                             for(ParseObject i: scoreList){
+                                                Log.e("test","for");
 
-                                                i.put("Point", i.getInt("Points")-10);
+                                                i.put("points", i.getInt("points")-10);
                                                 i.saveInBackground(new SaveCallback() {
                                                     @Override
                                                     public void done(ParseException e) {

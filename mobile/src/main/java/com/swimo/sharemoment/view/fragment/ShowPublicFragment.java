@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ public class ShowPublicFragment extends Fragment {
     Button download,share,fav;
     List<ParseObject> ob,ob1;
     String idfk;
+    ParseUser owner;
     public ShowPublicFragment() {
         // Required empty public constructor
     }
@@ -182,11 +184,27 @@ public class ShowPublicFragment extends Fragment {
                     query.findInBackground(new FindCallback<ParseUser>() {
                         public void done(List<ParseUser> objects, ParseException e) {
                             if (e == null) {
-                                Toast.makeText(getActivity(), objects.size()+"", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), objects.size() + "", Toast.LENGTH_SHORT).show();
                                 for (ParseUser ob : objects) {
+                                    owner = ob;
 
-                                    int p = ob.getInt("Points") + 2;
-                                    ob.put("Points", p);
+                                }
+
+                            } else {
+                                // Something went wrong.
+                            }
+                        }
+                    });
+
+                    ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Point");
+                    query1.whereEqualTo("owner", owner);
+                    query1.findInBackground(new FindCallback<ParseObject>() {
+                        public void done(List<ParseObject> scoreList, ParseException e) {
+                            if (e == null) {
+
+                                for (ParseObject ob : scoreList) {
+                                    int p = ob.getInt("pointslead") + 2;
+                                    ob.put("pointslead", p);
                                     ob.saveInBackground(new SaveCallback() {
                                         public void done(ParseException e) {
                                             if (e == null) {
@@ -200,10 +218,13 @@ public class ShowPublicFragment extends Fragment {
 
                                         }
                                     });
+
                                 }
 
+
+                                Log.d("score", "Retrieved " + scoreList.size() + " scores");
                             } else {
-                                // Something went wrong.
+                                Log.d("score", "Error: " + e.getMessage());
                             }
                         }
                     });

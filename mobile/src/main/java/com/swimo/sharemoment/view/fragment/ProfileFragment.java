@@ -73,7 +73,7 @@ View v;
         imgprofil=(CircularImageView)v.findViewById(R.id.imageViewcercle);
 
         imageLoader.DisplayImage(Home.image ,imgprofil);
-        select.setOnClickListener(new View.OnClickListener() {
+        imgprofil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pickFromGallery();

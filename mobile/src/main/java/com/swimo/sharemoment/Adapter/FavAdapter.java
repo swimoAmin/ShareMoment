@@ -71,11 +71,11 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
         imageLoader.DisplayImage(mItems.get(i).getimageurl(),
                 viewHolder.imgThumbnail);
         mProgressDialog.hide();
-viewHolder.imgThumbnail.setOnClickListener(new View.OnClickListener() {
+        viewHolder.imgThumbnail.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         url=mItems.get(i).getimageurl();
-        id=mItems.get(i).getId();
+        id=mItems.get(i).getDesc();
         Home.dr=true;
         Log.e("test2",mItems.get(i).getId());
 

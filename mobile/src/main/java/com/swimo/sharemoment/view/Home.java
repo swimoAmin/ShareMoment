@@ -35,7 +35,7 @@ import com.swimo.sharemoment.view.fragment.ContactFragment;
 import com.swimo.sharemoment.view.fragment.FavoritFragment;
 import com.swimo.sharemoment.view.fragment.ProfileFragment;
 import com.swimo.sharemoment.view.fragment.PublicFragment;
-import com.swimo.sharemoment.view.fragment.SettingsFragment;
+import com.swimo.sharemoment.view.fragment.LeaderBoardFragment;
 import com.swimo.sharemoment.view.fragment.SuggestionFragment;
 import com.swimo.sharemoment.view.fragment.UploadFragment;
 
@@ -100,7 +100,7 @@ public class Home extends AppCompatActivity {
                         new PrimaryDrawerItem().withName("Favorit").withIcon(FontAwesome.Icon.faw_bookmark).withIdentifier(4)
                                 .withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700)),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Settings").withIcon(Octicons.Icon.oct_tools).withIdentifier(5),
+                        new SecondaryDrawerItem().withName("LeaderBoard").withIcon(Octicons.Icon.oct_gift).withIdentifier(5),
                         new SecondaryDrawerItem().withName("Suggestions").withIcon(Octicons.Icon.oct_dashboard).withIdentifier(6),
                         new SecondaryDrawerItem().withName("Contact").withIcon(FontAwesome.Icon.faw_send).withIdentifier(7),
                         new SecondaryDrawerItem().withName("Log Out").withIcon(FontAwesome.Icon.faw_sign_out).withIdentifier(8)
@@ -138,7 +138,7 @@ public class Home extends AppCompatActivity {
 
                                 break;
                             case 5:
-                                mFragment = new SettingsFragment();
+                                mFragment = new LeaderBoardFragment();
                                 setTitleActionBar("Settings");
                                 toolbar.setBackgroundColor(Color.parseColor("#2196F3"));
 

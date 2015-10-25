@@ -34,7 +34,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/imageViewcercle"
-        android:layout_toEndOf="@+id/imageViewcercle" />
+        android:layout_toEndOf="@+id/imageViewcercle"
+        android:visibility="gone"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,12 +43,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="USername"
         android:id="@+id/username"
-        android:layout_below="@+id/buttonselect"
-        android:layout_alignLeft="@+id/buttonselect"
-        android:layout_alignStart="@+id/buttonselect"
-        android:layout_alignRight="@+id/buttonselect"
-        android:layout_alignEnd="@+id/buttonselect"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_alignTop="@+id/imageViewcercle"
+        android:layout_toRightOf="@+id/imageViewcercle"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
