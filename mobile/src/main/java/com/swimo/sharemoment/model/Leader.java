@@ -1,5 +1,7 @@
 package com.swimo.sharemoment.model;
 
+import com.swimo.sharemoment.Adapter.LeaderAdapter;
+
 /**
  * Created by swimo on 21/10/15.
  */
@@ -7,6 +9,7 @@ public class Leader {
     public String url;
     public String username;
     public String points;
+    public int pLead;
     public boolean me;
 
     public Leader(String url, String username, String points, boolean me) {
@@ -15,8 +18,16 @@ public class Leader {
         this.points = points;
         this.me = me;
     }
-
     public Leader() {
+
+    }
+
+    public int getpLead() {
+        return pLead;
+    }
+
+    public void setpLead(int pLead) {
+        this.pLead = pLead;
     }
 
     public String getUrl() {

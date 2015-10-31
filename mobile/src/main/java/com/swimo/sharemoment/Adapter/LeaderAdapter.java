@@ -25,6 +25,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.swimo.sharemoment.R;
+import com.swimo.sharemoment.extra.CircularImageView;
 import com.swimo.sharemoment.extra.ImageLoader;
 import com.swimo.sharemoment.extra.SquareImageView;
 import com.swimo.sharemoment.model.ImagesList;
@@ -51,19 +52,28 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
     ProgressDialog mProgressDialog;
     public static String url;
     public static ParseUser owner;
+    int k;
 
 
 
-
-    public LeaderAdapter(Context context,List<Leader> mItems) {
+    public LeaderAdapter(Context context) {
         super();
 
         this.context = context;
-        this.mItems = mItems;
+        this.mItems = Home.mItems;
         this.arraylist = new ArrayList<Leader>();
         this.arraylist.addAll(mItems);
         imageLoader = new ImageLoader(context);
-        Log.e("tetetetetetetettetet",arraylist.size()+":hhhhhh");
+        mProgressDialog = new ProgressDialog(context);
+        // Set progressdialog title
+        mProgressDialog.setTitle("Share Moments ");
+        // Set progressdialog message
+        mProgressDialog.setMessage("Loading...");
+        mProgressDialog.setIndeterminate(false);
+        // Show progressdialog
+        mProgressDialog.show();
+
+
     }
 
     @Override
@@ -78,17 +88,12 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
         Point size = new Point();
         display.getSize(size);
         device_width = size.x;
-        mProgressDialog = new ProgressDialog(context);
-        mProgressDialog.setTitle("Share Moments ");
-        mProgressDialog.setMessage("Loading...");
-        mProgressDialog.setIndeterminate(false);
-        mProgressDialog.show();
+
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, final int i) {
-
 
         if(mItems.get(i).isMe()){
           viewHolder.exchange.setVisibility(View.VISIBLE);
@@ -98,14 +103,14 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
 
         }
 
-        //imageLoader.DisplayImage(mItems.get(i).getUrl(), viewHolder.imgThumbnail);
+
+         imageLoader.DisplayImage(mItems.get(i).getUrl(), viewHolder.imgThumbnail);
         viewHolder.name.setText(mItems.get(i).getUsername());
-        viewHolder.points.setText(mItems.get(i).getPoints());
-        Log.e("teststststs", mItems.get(i).getUsername());
-        Log.e("teststststs", mItems.get(i).getPoints());
+        viewHolder.points.setText(mItems.get(i).getpLead() + "");
+        viewHolder.rank.setText((i+1) + "");
 
 
-        mProgressDialog.hide();
+
 
        /* Picasso.with(context)
                 .load(mItems.get(i).getimageurl())
@@ -118,14 +123,12 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
             @Override
             public void onClick(View v) {
 
-
-
-
-
-
-
             }
         });
+
+
+    mProgressDialog.hide();
+
 
 
 
@@ -139,20 +142,23 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public SquareImageView imgThumbnail;
+        public CircularImageView imgThumbnail;
         public Button exchange;
         public TextView name;
         public TextView points;
+        public TextView rank;
+
 
 
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imgThumbnail = (SquareImageView)itemView.findViewById(R.id.img_thumbnail);
+            imgThumbnail = (CircularImageView)itemView.findViewById(R.id.img_thumbnail_lead);
             exchange=(Button)itemView.findViewById(R.id.Bexchange);
-            name=(TextView)itemView.findViewById(R.id.name);
+            name=(TextView)itemView.findViewById(R.id.namelead);
             points=(TextView)itemView.findViewById(R.id.points);
+            rank=(TextView)itemView.findViewById(R.id.rank);
 
         }
     }

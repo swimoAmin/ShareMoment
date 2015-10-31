@@ -13,6 +13,7 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -29,8 +30,13 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.octicons_typeface_library.Octicons;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.swimo.sharemoment.R;
+import com.swimo.sharemoment.model.Leader;
 import com.swimo.sharemoment.view.fragment.ContactFragment;
 import com.swimo.sharemoment.view.fragment.FavoritFragment;
 import com.swimo.sharemoment.view.fragment.ProfileFragment;
@@ -43,6 +49,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends AppCompatActivity {
     public static AccountHeader headerResult = null;
@@ -54,6 +62,10 @@ public class Home extends AppCompatActivity {
     Accueil   acc;
     public static boolean dr=false;
     public static Toolbar toolbar;
+    public static List<Leader> mItems;
+    List<ParseObject> ob;
+    public   Leader  map;
+    int k=0,j=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,6 +191,50 @@ public class Home extends AppCompatActivity {
             result.setSelection(2, true);
         else
             result.setSelection(1, true);
+        mItems = new ArrayList<Leader>();
+        try {
+            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Point");
+            query.include("User");
+            query.orderByAscending("pointslead");
+            ob = query.find();
+
+
+            for (final ParseObject img : ob) {
+
+
+                ParseQuery<ParseUser> queryuser = ParseUser.getQuery();
+                queryuser.getInBackground(img.getParseUser("owner").getObjectId(), new GetCallback<ParseUser>() {
+                    public void done(final ParseUser object, ParseException e) {
+                        if (e == null) {
+
+
+                            map = new Leader();
+                            map.setpLead(img.getInt("pointslead"));
+                            map.setUsername(object.getUsername());
+                            map.setUrl(object.getParseFile("img").getUrl());
+                            if (ParseUser.getCurrentUser().getObjectId().equals(object.getObjectId())) {
+                                map.setMe(true);
+                            } else {
+                                map.setMe(false);
+                            }
+
+                            mItems.add(map);
+                        } else {
+                            Log.e("Error", e.getMessage());
+                        }
+                    }
+                });
+
+                Log.e("test2", img.getInt("pointslead") + "");
+
+
+            }
+
+        } catch (ParseException e) {
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+        }
+
 
 
     }

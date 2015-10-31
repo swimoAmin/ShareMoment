@@ -120,6 +120,7 @@ public class PublicFragment extends Fragment {
                             map.setU(img.getParseUser("owner"));
                             mItems.add(map);
 
+
                         }
 
         } catch (ParseException e) {
@@ -134,6 +135,7 @@ public class PublicFragment extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             mRecyclerView = (RecyclerView)v.findViewById(R.id.Recpublic);
+            Log.e("tetetetetetetettetet",mItems.size()+":uuuuuuu");
 
             mRecyclerView.setHasFixedSize(true);
 
