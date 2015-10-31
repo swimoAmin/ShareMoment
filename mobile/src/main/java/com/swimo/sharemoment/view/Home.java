@@ -197,8 +197,6 @@ public class Home extends AppCompatActivity {
             query.include("User");
             query.orderByAscending("pointslead");
             ob = query.find();
-
-
             for (final ParseObject img : ob) {
 
 
