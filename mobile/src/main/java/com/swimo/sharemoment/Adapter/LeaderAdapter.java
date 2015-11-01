@@ -1,5 +1,6 @@
 package com.swimo.sharemoment.Adapter;
 
+
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -27,6 +28,8 @@ import com.parse.SaveCallback;
 import com.swimo.sharemoment.R;
 import com.swimo.sharemoment.extra.CircularImageView;
 import com.swimo.sharemoment.extra.ImageLoader;
+import com.swimo.sharemoment.extra.*;
+
 import com.swimo.sharemoment.extra.SquareImageView;
 import com.swimo.sharemoment.model.ImagesList;
 import com.swimo.sharemoment.model.Leader;
@@ -34,6 +37,8 @@ import com.swimo.sharemoment.view.Home;
 import com.swimo.sharemoment.view.fragment.ShowPublicFragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -63,6 +68,10 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
         this.mItems = Home.mItems;
         this.arraylist = new ArrayList<Leader>();
         this.arraylist.addAll(mItems);
+        Collections.sort(mItems, new MyComparator());
+        for (Leader lteam : mItems) {
+            Log.e("leaderboard",lteam.username + ": " + lteam.points + " points");
+        }
         imageLoader = new ImageLoader(context);
         mProgressDialog = new ProgressDialog(context);
         // Set progressdialog title

@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ import com.swimo.sharemoment.view.fragment.LeaderBoardFragment;
 import com.swimo.sharemoment.view.fragment.SuggestionFragment;
 import com.swimo.sharemoment.view.fragment.UploadFragment;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -201,6 +203,7 @@ public class Home extends AppCompatActivity {
 
 
                 ParseQuery<ParseUser> queryuser = ParseUser.getQuery();
+
                 queryuser.getInBackground(img.getParseUser("owner").getObjectId(), new GetCallback<ParseUser>() {
                     public void done(final ParseUser object, ParseException e) {
                         if (e == null) {
@@ -220,6 +223,7 @@ public class Home extends AppCompatActivity {
                         } else {
                             Log.e("Error", e.getMessage());
                         }
+
                     }
                 });
 
@@ -272,6 +276,15 @@ public class Home extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+    public void SharePoints(){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, "http://www.google.com");
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "description");
+        startActivity(Intent.createChooser(intent, "Share"));
+
+
     }
 
 }
